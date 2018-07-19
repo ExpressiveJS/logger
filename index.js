@@ -79,8 +79,7 @@ function loadLoggers(loggers, loggerConfigs, loggerWorkingPath) {
         continue
       }
 
-      if (!extendedLoggerMethods[method])
-        extendedLoggerMethods[method] = []
+      extendedLoggerMethods[method] = objects.expects(extendedLoggerMethods[method], [])
 
       if (extendedLoggerMethods[method].includes(logger[method])) {
         console.warn(`[logger] Logger '${loggerName}' method '${method}' already extended.`)
