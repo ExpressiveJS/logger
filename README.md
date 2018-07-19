@@ -27,24 +27,6 @@ Generic logging utility focused around a plugin-architecture to be used in proje
 #### Output: ####
     $ I am a Logging
     
-<br><br>
-
-## Example user config: ##
-    const exampleUserConfig = {
-      examplePlugin: { 
-        someProp: true,
-      },
-    }
-
-    logger.load([ 'examplePlugin' ], exampleUserConfig)
-    
-<br>
-
-## Path to loggers: ##
-Uses `path.resolve()` behind the scenes.
-
-    logger.load([ 'examplePlugin' ], null, './loggers')
-
 <br>
 
 ## Example Plugin: ##
@@ -62,6 +44,24 @@ Uses `path.resolve()` behind the scenes.
           console.log(`[${sender.type}] ${message}`)
       }
     }
+
+<br><br><br>
+
+## Example user config: ##
+    const exampleUserConfig = {
+      examplePlugin: { 
+        someProp: true,
+      },
+    }
+
+    logger.load([ 'examplePlugin' ], exampleUserConfig)
+    
+<br>
+
+## Path to loggers: ##
+Uses `path.resolve()` behind the scenes.
+
+    logger.load([ 'examplePlugin' ], null, './loggers')
 
 <br>
 
