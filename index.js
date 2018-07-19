@@ -1,6 +1,6 @@
 'use strict'
 
-const objects = require('objects')
+const objects = require('@expressivejs/objects')
 const path = require('path')
 
 let extendedLoggerMethods = {}
@@ -18,10 +18,10 @@ function loadLoggers(loggers, loggerConfigs, loggerWorkingPath) {
   if (!loggers)
     throw new Error('[logger] was given an improper loggers object. \'logger.load()\' expects an array of loggers.')
 
-  if (!loggerWorkingPath)
+  if (loggerWorkingPath)
+    loggerWorkingPath = path.resolve(loggerWorkingPath)
+  else
     loggerWorkingPath = path.resolve('./loggers')
-
-  loggers.unshift('template')
 
   for (let loggerName of loggers) {
     const loggerPath = path.join(loggerWorkingPath, `/${loggerName}`)
@@ -107,7 +107,9 @@ function sendToLoggers(methodName, sender) {
 }
 
 function loggerAPI(type, name) {
-  const sender = ((name) ? { type: type, name: name } : { type: type })
+  let sender = type
+  if (typeof sender !== 'object')
+    sender = ((name) ? { type: type, name: name } : { type: type })
 
   for (const method of Object.keys(extendedLoggerMethods)) {
     loggerAPIMethods[method] = sendToLoggers(method, sender)
