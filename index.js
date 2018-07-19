@@ -97,8 +97,8 @@ function loadLoggers(loggers, loggerConfigs, loggerWorkingPath) {
 
 function sendToLoggers(methodName, sender) {
   const logger = function(...params) {
-    for (const log of extendedLoggerMethods[methodName]) {
-      log.apply({}, [sender, ...params])
+    for (const fn of extendedLoggerMethods[methodName]) {
+      fn.apply({}, [sender, ...params])
     }
   }
 
