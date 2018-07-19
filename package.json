@@ -1,5 +1,5 @@
 {
-  "name": "logger",
+  "name": "@expressivejs/logger",
   "version": "1.0.0",
   "description": "Generic logging utility focused around a plugin-architecture to be used in projects and APIs.",
   "main": "index.js",
@@ -15,6 +15,6 @@
   "author": "Levi Roberts",
   "license": "MIT",
   "dependencies": {
-    "objects": "git+https://github.com/ExpressiveJS/objects.git"
+    "@expressivejs/objects": "^1.0.0"
   }
 }
